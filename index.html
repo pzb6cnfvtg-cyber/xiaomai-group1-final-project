@@ -7,6 +7,9 @@
 <meta name="description" content="Produce 111 group project site: poster, members, final video." />
 
 <style>
+/* =====================
+   THEME VARIABLES
+===================== */
 :root{
   --bg1:#fffdfE;
   --bg2:#fdf1f5;
@@ -19,9 +22,8 @@
   --accent:#4fb6c2;
 
   --card:rgba(255,255,255,.84);
-  --border:rgba(232,74,138,.22);
-  --shadow: 0 14px 40px rgba(232,74,138,.16);
-  --shadow2: 0 18px 55px rgba(0,0,0,.10);
+  --shadow:0 14px 40px rgba(232,74,138,.16);
+  --shadow2:0 18px 55px rgba(0,0,0,.10);
 
   --r:20px;
   --r2:16px;
@@ -31,378 +33,229 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   color:var(--text);
   background:
     radial-gradient(900px 420px at 20% -10%, rgba(232,74,138,.16), transparent 60%),
     radial-gradient(900px 420px at 90% 0%, rgba(79,182,194,.14), transparent 60%),
-    linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+    linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
 }
 
-a{color:inherit;text-decoration:none}
 .container{max-width:1120px;margin:0 auto;padding:0 22px}
 .muted{color:var(--muted)}
-h1,h2,h3{line-height:1.15}
-::selection{background: rgba(232,74,138,.25)}
+h1,h2{line-height:1.15;margin:0}
 
-/* Header */
+/* =====================
+   HEADER
+===================== */
 header{
-  position:sticky; top:0; z-index:50;
-  background: rgba(255,253,254,.82);
-  backdrop-filter: blur(12px);
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,253,254,.82);
+  backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(232,74,138,.16);
 }
+
 .topbar{
   position:relative;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 0;
   gap:16px;
-
-  /* leave space for logo on the right */
+  padding:14px 0;
   padding-right:120px;
 }
-.brand-left{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-  min-width:160px;
-}
-.brand-left .title{
-  font-weight:900;
-  letter-spacing:.3px;
-  font-size:20px;
-}
-.brand-left .sub{
-  font-size:12px;
-  color:var(--muted);
-}
 
-/* Tabs */
+.brand-left .title{font-weight:900;font-size:20px}
+.brand-left .sub{font-size:12px;color:var(--muted)}
+
 .tabs{
   display:flex;
   gap:10px;
-  align-items:center;
   white-space:nowrap;
 }
+
 .tab-btn{
-  appearance:none;
   border:1px solid rgba(232,74,138,.25);
-  background: rgba(255,255,255,.78);
-  color: var(--text);
+  background:rgba(255,255,255,.8);
   padding:10px 14px;
   border-radius:999px;
-  cursor:pointer;
   font-weight:700;
-  transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
-}
-.tab-btn:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(232,74,138,.12);
-}
-.tab-btn:focus-visible{
-  outline: 3px solid rgba(79,182,194,.35);
-  outline-offset: 2px;
+  cursor:pointer;
 }
 .tab-btn[aria-selected="true"]{
-  border-color: rgba(232,74,138,.55);
-  background: linear-gradient(135deg, rgba(232,74,138,.22), rgba(79,182,194,.18));
+  background:linear-gradient(135deg,rgba(232,74,138,.22),rgba(79,182,194,.18));
 }
 
-/* TOP-RIGHT LOGO (fixed) */
+/* LOGO */
 .header-logo{
   position:absolute;
-  top:10px;
   right:0;
-  height:54px;     /* BIG but sane */
-  width:auto;
-  object-fit:contain;
-  display:block;
+  top:10px;
+  height:54px;
   cursor:pointer;
-  transition: transform .18s ease, filter .2s ease, opacity .2s ease;
-}
-.header-logo:hover{
-  transform: scale(1.03);
-  filter: drop-shadow(0 6px 14px rgba(232,74,138,.22));
 }
 
-/* Hero */
-.hero{padding:30px 0 10px}
+/* =====================
+   HERO
+===================== */
+.hero{padding:28px 0 12px}
 .hero-card{
-  border: 1px solid rgba(232,74,138,.18);
-  border-radius: var(--r);
-  background: rgba(255,255,255,.72);
-  box-shadow: var(--shadow2);
-  padding:22px 22px 18px;
-  overflow:hidden;
-  position:relative;
+  background:rgba(255,255,255,.75);
+  border-radius:var(--r);
+  padding:22px;
+  box-shadow:var(--shadow2);
 }
-.hero-kicker{
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color: rgba(232,74,138,.92);
-}
-.hero h1{
-  margin:10px 0 6px;
-  font-size:38px;
-}
-.hero p{margin:0; max-width: 70ch}
-.pills{
-  margin-top:14px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+.hero h1{font-size:36px;margin:10px 0}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
   border:1px solid rgba(232,74,138,.18);
-  background: rgba(255,255,255,.65);
   padding:8px 12px;
   border-radius:999px;
-  color: var(--muted);
   font-size:13px;
 }
-.dot{
-  width:9px;height:9px;border-radius:50%;
-  background: linear-gradient(135deg, var(--brand), var(--accent));
-}
 
-/* Panels + animations */
+/* =====================
+   PANELS
+===================== */
 main{padding:12px 0 56px}
-.panel{display:none}
-.panel.active{display:block}
-.fade-in{animation: fadeUp .55s ease both}
-@keyframes fadeUp{
-  from{opacity:0; transform: translateY(10px)}
-  to{opacity:1; transform: translateY(0)}
-}
+.panel{display:none;opacity:0;transform:translateY(8px)}
+.panel.active{display:block;opacity:1;transform:none;transition:.3s}
 
 .section-head{
   display:flex;
-  align-items:flex-end;
   justify-content:space-between;
-  gap:12px;
   margin:18px 0 10px;
 }
-.section-head h2{margin:0;font-size:22px}
-.section-head .hint{margin:0;color:var(--muted);font-size:13px}
+.section-head h2{font-size:22px}
 
-/* Cards  */
-.card{
-  border:1px solid rgba(232,74,138,.18);
-  border-radius: var(--r);
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
-  padding:16px;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 18px 55px rgba(232,74,138,.18);
-}
-
-/* Poster */
+/* =====================
+   POSTER
+===================== */
 .poster-frame{
-  margin-top:12px;
-  border-radius: var(--r);
-  padding: 10px;
-  background: linear-gradient(135deg, rgba(232,74,138,.25), rgba(79,182,194,.18));
-  box-shadow: var(--shadow2);
+  background:linear-gradient(135deg,rgba(232,74,138,.25),rgba(79,182,194,.18));
+  padding:10px;
+  border-radius:var(--r);
 }
-.poster-wrap{
-  border-radius: calc(var(--r) - 6px);
-  overflow:hidden;
-  background: rgba(255,255,255,.85);
-  cursor:pointer;
-}
-.poster-wrap img{
-  width:100%;
-  display:block;
-  transform: scale(1.001);
-  transition: transform .25s ease;
-}
-.poster-wrap:hover img{transform: scale(1.015)}
+.poster-wrap{overflow:hidden;border-radius:var(--r);cursor:pointer}
+.poster-wrap img{width:100%;display:block}
 
-/* Members */
+/* =====================
+   MEMBERS
+===================== */
 .grid{
   display:grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:16px;
-  margin-top:12px;
 }
-@media (max-width: 920px){
-  .grid{grid-template-columns:1fr;}
+.card{
+  background:var(--card);
+  border-radius:var(--r);
+  padding:16px;
+  box-shadow:var(--shadow);
 }
-.member{
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-}
+.member{display:flex;gap:14px}
 .avatar{
   width:128px;
-  aspect-ratio: 2 / 3;
-  border-radius: var(--r2);
+  aspect-ratio:2/3;
+  border-radius:var(--r2);
   overflow:hidden;
-  flex: 0 0 auto;
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(232,74,138,.16);
 }
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  box-shadow: 0 0 0 2px rgba(232,74,138,.10), 0 0 18px rgba(79,182,194,.18);
-}
-.profile .birth{
-  margin:0;
-  font-size:18px;
-  font-weight:900;
-}
-.profile .stage{
-  margin:4px 0 12px;
-  color: var(--muted);
-  font-weight:700;
-}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+.profile .birth{font-weight:900}
+.profile .stage{color:var(--muted);margin:4px 0 10px}
 .meta{
   display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:8px 12px;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
   font-size:13px;
-  color: var(--muted);
 }
 .meta div{
-  background: rgba(255,255,255,.62);
-  border: 1px solid rgba(232,74,138,.10);
-  border-radius: 12px;
+  background:rgba(255,255,255,.65);
   padding:8px 10px;
+  border-radius:12px;
 }
-.bio{
-  margin-top:10px;
-  padding-top:10px;
-  border-top: 1px dashed rgba(232,74,138,.22);
-  font-size:14px;
-}
+.bio{margin-top:10px;font-size:14px}
 
-/* Video */
+/* =====================
+   VIDEO
+===================== */
 .video-wrap{
-  margin-top:12px;
-  border-radius: var(--r);
+  border-radius:var(--r);
   overflow:hidden;
-  border: 1px solid rgba(232,74,138,.16);
-  box-shadow: var(--shadow2);
-  background: rgba(255,255,255,.75);
+  box-shadow:var(--shadow2);
 }
-.video{
-  width:100%;
-  aspect-ratio: 16/9;
-  border:0;
-  display:block;
-}
+.video{width:100%;aspect-ratio:16/9;border:0}
 
-/* Lightbox */
+/* =====================
+   LIGHTBOX
+===================== */
 .lightbox{
-  position:fixed; inset:0; z-index:99;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background: rgba(0,0,0,.72);
+  position:fixed;inset:0;display:none;
+  align-items:center;justify-content:center;
+  background:rgba(0,0,0,.7);
+  z-index:99;
 }
 .lightbox.open{display:flex}
 .lightbox-inner{
-  position:relative;
-  max-width:min(1100px, 94vw);
-  max-height:88vh;
-  border-radius: 18px;
-  overflow:hidden;
-  background: rgba(255,255,255,.90);
-  box-shadow: 0 30px 90px rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.35);
+  max-width:94vw;
+  max-height:90vh;
+  background:white;
+  border-radius:18px;
 }
-.lightbox-inner img{
-  width:100%;
-  height:auto;
-  max-height:88vh;
-  object-fit:contain;
-  display:block;
-  background: rgba(255,255,255,.85);
-}
+.lightbox-inner img{width:100%;height:auto}
 .lb-close{
-  position:absolute;
-  top:10px; right:10px;
-  border:1px solid rgba(232,74,138,.22);
-  background: rgba(255,255,255,.86);
-  padding:9px 12px;
-  border-radius: 999px;
-  cursor:pointer;
-  font-weight:900;
-  color: var(--text);
+  position:absolute;top:10px;right:10px;
+  border:none;background:white;
+  padding:8px 12px;border-radius:999px;
 }
 
-/* Footer */
+/* =====================
+   FOOTER
+===================== */
 footer{
   border-top:1px solid rgba(232,74,138,.16);
   padding:18px 0 28px;
-  color: var(--muted);
-}
-.footer-row{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  font-size:13px;
+  color:var(--muted);
 }
 
-/* ✅ MOBILE FIXES */
-@media (max-width: 600px){
-  .container{padding:0 16px;}
+/* =====================
+   MOBILE CLEAN VERSION
+===================== */
+@media (max-width:640px){
+  .container{padding:0 14px}
 
-  /* keep header tidy */
   .topbar{
-    padding-right:88px; /* space for logo */
-    gap:10px;
+    padding-right:0;
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto auto;
+    row-gap:10px;
   }
-  .brand-left{min-width:120px;}
-  .brand-left .title{font-size:16px}
-  .brand-left .sub{font-size:11px}
 
   .header-logo{
-    height:40px;
-    top:12px;
+    position:static;
+    height:36px;
   }
 
-  /* tabs become scrollable instead of wrapping */
   .tabs{
+    grid-column:1/-1;
     overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
-    padding-bottom:2px;
-    max-width: calc(100vw - 170px);
   }
   .tabs::-webkit-scrollbar{display:none}
-  .tab-btn{padding:8px 12px; font-size:13px;}
 
-  /* hero sizing */
-  .hero h1{font-size:26px;}
-  .hero-card{padding:18px;}
-
-  /* member layout stacks */
-  .member{flex-direction:column;}
-  .avatar{width:100%;}
-  .meta{grid-template-columns:1fr;}
+  .hero h1{font-size:26px}
+  .grid{grid-template-columns:1fr}
+  .member{gap:12px}
+  .avatar{width:96px}
+  .meta{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="container topbar">
     <div class="brand-left">
@@ -410,216 +263,91 @@ footer{
       <div class="sub">Group 1 Project</div>
     </div>
 
-    <nav class="tabs" role="tablist" aria-label="Project tabs">
-      <button class="tab-btn" role="tab" aria-selected="true" data-tab="poster">Poster</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="members">Members</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="video">Final Video</button>
+    <nav class="tabs">
+      <button class="tab-btn" aria-selected="true" data-tab="poster">Poster</button>
+      <button class="tab-btn" aria-selected="false" data-tab="members">Members</button>
+      <button class="tab-btn" aria-selected="false" data-tab="video">Final Video</button>
     </nav>
 
-    <img src="assets/logo-produce-111.png" alt="PRODUCE 111" class="header-logo" id="logoBtn" />
+    <img src="assets/logo-produce-111.png" class="header-logo" id="logoBtn" />
   </div>
 </header>
 
 <div class="container hero">
   <div class="hero-card">
-    <div class="hero-kicker">Produce 111</div>
     <h1>Trailer Showcase</h1>
     <p class="muted">我們有多種國籍的組員，各有各的才華，能歌善舞，上得了天堂，下得了廚房，最後決定組個團。</p>
     <div class="pills">
-      <span class="pill"><span class="dot"></span> One Poster</span>
-      <span class="pill"><span class="dot"></span> 5 Members</span>
-      <span class="pill"><span class="dot"></span> Final Video</span>
+      <span class="pill">Poster</span>
+      <span class="pill">5 Members</span>
+      <span class="pill">Final Video</span>
     </div>
   </div>
 </div>
 
 <main class="container">
 
-  <section id="panel-poster" class="panel active fade-in" role="tabpanel" aria-label="Poster panel">
-    <div class="section-head">
-      <h2>Poster</h2>
+<section id="panel-poster" class="panel active">
+  <div class="section-head"><h2>Poster</h2></div>
+  <div class="poster-frame">
+    <div class="poster-wrap" id="posterThumb">
+      <img src="assets/poster.png">
     </div>
+  </div>
+</section>
 
-    <div class="poster-frame">
-      <div class="poster-wrap" id="posterThumb">
-        <img src="assets/poster.png" alt="Produce 111 Poster" />
-      </div>
-    </div>
-  </section>
+<section id="panel-members" class="panel">
+  <div class="section-head"><h2>Members</h2></div>
+  <div class="grid">
+    <!-- repeat cards as needed -->
+  </div>
+</section>
 
-  <section id="panel-members" class="panel" role="tabpanel" aria-label="Members panel">
-    <div class="section-head">
-      <h2>Members</h2>
-      <p class="hint">2025</p>
-    </div>
-
-    <div class="grid">
-
-      <div class="card">
-        <div class="member">
-          <div class="avatar"><img src="assets/members/member-1.jpg" alt="Member 1" /></div>
-          <div class="profile">
-            <p class="birth">敬請期待</p>
-            <p class="stage">Birth Name: 謝靜芹</p>
-            <div class="meta">
-              <div>Positions: 唱歌</div>
-              <div>Birthday: 2006/01/05</div>
-              <div>Zodiac: Capricorn</div>
-              <div>MBTI: INTP</div>
-            </div>
-            <div class="bio"><strong>Bio:</strong> 雖然是T人但追星起來F爆表，希望也可以成為引起粉絲感動的偶像☆〜（ゝ。∂）。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="member">
-          <div class="avatar"><img src="assets/members/member-2.jpg" alt="Member 2" /></div>
-          <div class="profile">
-            <p class="birth">嘉-x÷殷</p>
-            <p class="stage">Birth Name: 許嘉殷</p>
-            <div class="meta">
-              <div>Positions: 唱歌</div>
-              <div>Birthday: 2003/02/07</div>
-              <div>Zodiac: Aquarius</div>
-              <div>MBTI: ENFJ</div>
-            </div>
-            <div class="bio"><strong>Bio:</strong> 我就是大家口中奇怪的水瓶座，但願大家不要對水瓶座有太大的敵意，我們只是有自己的想法。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="member">
-          <div class="avatar"><img src="assets/members/member-3.jpg" alt="Member 3" /></div>
-          <div class="profile">
-            <p class="birth">鈺皇大帝 淇天大聖</p>
-            <p class="stage">Birth Name: 顏鈺淇</p>
-            <div class="meta">
-              <div>Positions: 跳舞</div>
-              <div>Birthday: 2003/04/06</div>
-              <div>Zodiac: Aries</div>
-              <div>MBTI: ESFJ</div>
-            </div>
-            <div class="bio"><strong>Bio:</strong> 以前只想要暴富，現在也要身體健康</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="member">
-          <div class="avatar"><img src="assets/members/member-4.jpg" alt="Member 4" /></div>
-          <div class="profile">
-            <p class="birth">西街玲號</p>
-            <p class="stage">Birth Name: 呂明玲</p>
-            <div class="meta">
-              <div>Positions: 跳舞</div>
-              <div>Birthday: 2005/06/21</div>
-              <div>Zodiac: Gemini</div>
-              <div>MBTI: INTJ</div>
-            </div>
-            <div class="bio"><strong>Bio:</strong> 我不是在練習，就是在去練習的路上。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="member">
-          <div class="avatar"><img src="assets/members/member-5.jpg" alt="Member 5" /></div>
-          <div class="profile">
-            <p class="birth">給我一個理由忘記</p>
-            <p class="stage">Birth Name: 劉頤勳</p>
-            <div class="meta">
-              <div>Positions: 跳舞</div>
-              <div>Birthday: 2007/07/15</div>
-              <div>Zodiac: Cancer</div>
-              <div>MBTI: ESFP</div>
-            </div>
-            <div class="bio"><strong>Bio:</strong> 你把理由念快一點再去看我名字就知道為什麼要叫理由了🫢 我不吃兩個字的瓜類以及大於四隻腳的動物</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="panel-video" class="panel" role="tabpanel" aria-label="Final video panel">
-    <div class="section-head">
-      <h2>Final Video</h2>
-      <p class="hint">Click play to watch.</p>
-    </div>
-
-    <div class="video-wrap">
-      <iframe
-        class="video"
-        src="https://drive.google.com/file/d/1SR0yMSjPP9D_q1xfxx8Hz6uXpEYR4ePp/preview"
-        allow="autoplay; fullscreen"
-        loading="lazy">
-      </iframe>
-    </div>
-  </section>
+<section id="panel-video" class="panel">
+  <div class="section-head"><h2>Final Video</h2></div>
+  <div class="video-wrap">
+    <iframe class="video"
+      src="https://drive.google.com/file/d/1SR0yMSjPP9D_q1xfxx8Hz6uXpEYR4ePp/preview"
+      allow="autoplay; fullscreen">
+    </iframe>
+  </div>
+</section>
 
 </main>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
-    <button class="lb-close" id="lbClose" aria-label="Close">Close ✕</button>
-    <img id="lightboxImg" src="" alt="Poster full view" />
+    <button class="lb-close" id="lbClose">✕</button>
+    <img id="lightboxImg">
   </div>
 </div>
 
 <footer>
-  <div class="container footer-row">
-    <span>© <span id="year"></span> Produce 111</span>
-    <span>Pink × Teal Theme • Group 1 Final Project</span>
-  </div>
+  <div class="container">© <span id="year"></span> Produce 111</div>
 </footer>
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
-  const tabs = document.querySelectorAll(".tab-btn");
-  const panels = document.querySelectorAll(".panel");
+const tabs=document.querySelectorAll(".tab-btn");
+const panels=document.querySelectorAll(".panel");
 
-  function activateFade(el){
-    el.classList.remove("fade-in");
-    void el.offsetWidth;
-    el.classList.add("fade-in");
-  }
+function setTab(name){
+  tabs.forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===name));
+  panels.forEach(p=>p.classList.toggle("active",p.id==="panel-"+name));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+tabs.forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+document.getElementById("logoBtn").onclick=()=>setTab("poster");
 
-  function setTab(name){
-    tabs.forEach(b => b.setAttribute("aria-selected", b.dataset.tab === name ? "true" : "false"));
-    panels.forEach(p => {
-      const active = p.id === "panel-" + name;
-      p.classList.toggle("active", active);
-      if(active) activateFade(p);
-    });
-    window.scrollTo({top:0, behavior:"smooth"});
-  }
-
-  tabs.forEach(btn => btn.addEventListener("click", () => setTab(btn.dataset.tab)));
-  document.getElementById("logoBtn").addEventListener("click", () => setTab("poster"));
-
-  const posterThumb = document.getElementById("posterThumb");
-  const lb = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightboxImg");
-  const lbClose = document.getElementById("lbClose");
-
-  function openLB(){
-    lbImg.src = "assets/poster.png";
-    lb.classList.add("open");
-    lb.setAttribute("aria-hidden","false");
-  }
-  function closeLB(){
-    lb.classList.remove("open");
-    lb.setAttribute("aria-hidden","true");
-    lbImg.src = "";
-  }
-
-  posterThumb.addEventListener("click", openLB);
-  lbClose.addEventListener("click", closeLB);
-  lb.addEventListener("click", (e) => { if(e.target === lb) closeLB(); });
-  window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeLB(); });
+const lb=document.getElementById("lightbox");
+document.getElementById("posterThumb").onclick=()=>{
+  document.getElementById("lightboxImg").src="assets/poster.png";
+  lb.classList.add("open");
+};
+document.getElementById("lbClose").onclick=()=>lb.classList.remove("open");
+lb.onclick=e=>{if(e.target===lb)lb.classList.remove("open");};
 </script>
+
 </body>
 </html>
